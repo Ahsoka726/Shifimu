@@ -1,25 +1,21 @@
 let btnReset = document.getElementById('buttonReset'); //déclaration du bouton reset via l'id.
-
-
+//---------------------------------------------------------------------------
 let scorePlayer = document.getElementById('scorePlayer'); //déclaration du compteur de point du joueur via l'id.
 let scoreIa = document.getElementById('scoreIa'); //déclaration du compteur de point de l'ordinateur via l'id.
-
+//---------------------------------------------------------------------------
 let message = document.getElementById('message');//déclaration du message de défaite ou de victoire via l'id.
-// let cardevent = document.getElementById('event'); //déclaration pour changement de couleur de la card via l'id.
-
+let cardevent = document.getElementById('event'); //déclaration pour changement de couleur de la card via l'id.
+//---------------------------------------------------------------------------
 let scissor = document.getElementById('imgScissors');//déclaration du button ciseau du joueur via l'id.
 let paper = document.getElementById('imgPaper');//déclaration du button feuille du joueur via l'id.
 let rock = document.getElementById('imgRock');//déclaration du button pierre  du joueur via l'id.
 
-// let scissorIa = document.getElementById('imgScissorsIa');//déclaration du button ciseau de l'ordinateur via l'id.
-// let paperIa = document.getElementById('imgPaperIa');//déclaration du button feuille de l'ordinateur via l'id.
-// let rockIa = document.getElementById('imgRockIa');//déclaration du button pierre  de l'ordinateur via l'id.
-
+//---------------------------------------------------------------------------
 //Choix Ordinateur
 function randomIaChoose(min, max){
     return Math.floor(Math.random()*(max-min))+min;
 }
-
+//---------------------------------------------------------------------------
 function scissorChoose(){
     let random = randomIaChoose(1,4);
     let ciseauxValue = scissor.value;
@@ -33,7 +29,7 @@ function scissorChoose(){
         return victoryIa();
     }
 }
-
+//---------------------------------------------------------------------------
 function paperChoose(){
     let random = randomIaChoose(1,4);
     let feuilleValue = paper.value;
@@ -47,7 +43,7 @@ function paperChoose(){
         return victoryPlayer();
     }
 }
-
+//---------------------------------------------------------------------------
 function rockChoose () {
     let random = randomIaChoose(1,4);
     let pierreValue = rock.value;
@@ -61,21 +57,23 @@ function rockChoose () {
         return victoryPlayer();
     }
 }
-
+//---------------------------------------------------------------------------
 scissor.addEventListener('click', scissorChoose)
 paper.addEventListener('click', paperChoose)
 rock.addEventListener('click', rockChoose )
 
-
+//---------------------------------------------------------------------------
 
 //Fonction compteur pour IA et Player
     let victoryIa = () => {
         scoreIa.textContent++;
+        colorCard;
       };
       
     let victoryPlayer = () => {
         scorePlayer.textContent++;
       };
+//---------------------------------------------------------------------------
 
 //Evenement bouton reset
 btnReset.addEventListener('click', () =>{
@@ -83,3 +81,52 @@ btnReset.addEventListener('click', () =>{
     scorePlayer.textContent = 0;
     message.innerHTML ="";
 })
+//---------------------------------------------------------------------------
+
+//Affichage des couleurs sur les boutons 
+
+//Pour Ciseaux
+let choosePs = document.getElementById('choosePlayerS');
+
+choosePs.addEventListener("mouseover", (event) => {
+    // highlight the mouseover target
+    event.target.style.borderColor = "white";
+    event.target.style.borderStyle = "solid";
+    // reset the color after a short delay
+    setTimeout(() => {
+        event.target.style.borderColor = "";
+        event.target.style.borderStyle = "";
+      }, 500);
+    }, false);
+  
+//Pour Feuille
+let choosePp = document.getElementById('choosePlayerP');
+
+choosePp.addEventListener("mouseover", (event) => {
+      // highlight the mouseover target
+      event.target.style.borderColor = "white";
+      event.target.style.borderStyle = "solid";
+      // reset the color after a short delay
+      setTimeout(() => {
+        event.target.style.borderColor = "";
+        event.target.style.borderStyle = "";
+      }, 500);
+    }, false);
+
+//Pour Pierre
+let choosePr = document.getElementById('choosePlayerR');
+
+    choosePr.addEventListener("mouseover", (event) => {
+        // highlight the mouseover target
+        event.target.style.borderColor = "white";
+        event.target.style.borderStyle = "solid";
+        // reset the color after a short delay
+        setTimeout(() => {
+          event.target.style.borderColor = "";
+          event.target.style.borderStyle = "";
+        }, 500);
+      }, false);
+    
+//---------------------------------------------------------------------------
+
+//Affichage des couleurs pour choix de l'ordinateur 
