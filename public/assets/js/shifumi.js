@@ -21,6 +21,7 @@ function scissorChoose(){
     let ciseauxValue = scissor.value;
     if (ciseauxValue == random ) {
         message.innerHTML="Vous êtes à égalité"
+        return egal();
     } else if(ciseauxValue && random == 2) {
         message.innerHTML="Vous avez gagné cette manche !"
         return victoryPlayer();
@@ -35,6 +36,7 @@ function paperChoose(){
     let feuilleValue = paper.value;
     if (feuilleValue == random ) {
         message.innerHTML="Vous êtes à égalité"
+        return egal();
     } else if(feuilleValue && random == 1) {
         message.innerHTML="Vous avez perdu cette manche !"
         return victoryIa();
@@ -49,6 +51,7 @@ function rockChoose () {
     let pierreValue = rock.value;
     if (pierreValue == random ) {
         message.innerHTML="Vous êtes à égalité"
+        return egal();
     } else if(pierreValue && random == 2) {
         message.innerHTML="Vous avez perdu cette manche !"
         return victoryIa();
@@ -67,12 +70,17 @@ rock.addEventListener('click', rockChoose )
 //Fonction compteur pour IA et Player
     let victoryIa = () => {
         scoreIa.textContent++;
-        colorCard;
+        cardevent.style.backgroundColor = "red"; //Affichage des couleurs pour choix de l'ordinateur 
       };
       
     let victoryPlayer = () => {
         scorePlayer.textContent++;
+        cardevent.style.backgroundColor = "green"; //Affichage des couleurs pour choix de l'ordinateur 
       };
+
+    let egal = () =>{
+        cardevent.style.backgroundColor = "";
+    }
 //---------------------------------------------------------------------------
 
 //Evenement bouton reset
@@ -80,6 +88,7 @@ btnReset.addEventListener('click', () =>{
     scoreIa.textContent = 0;
     scorePlayer.textContent = 0;
     message.innerHTML ="";
+    cardevent.style.backgroundColor = ""; //Affichage des couleurs pour choix de l'ordinateur 
 })
 //---------------------------------------------------------------------------
 
@@ -89,10 +98,10 @@ btnReset.addEventListener('click', () =>{
 let choosePs = document.getElementById('choosePlayerS');
 
 choosePs.addEventListener("mouseover", (event) => {
-    // highlight the mouseover target
-    event.target.style.borderColor = "white";
+    
+    event.target.style.borderColor = "green";
     event.target.style.borderStyle = "solid";
-    // reset the color after a short delay
+    
     setTimeout(() => {
         event.target.style.borderColor = "";
         event.target.style.borderStyle = "";
@@ -103,10 +112,10 @@ choosePs.addEventListener("mouseover", (event) => {
 let choosePp = document.getElementById('choosePlayerP');
 
 choosePp.addEventListener("mouseover", (event) => {
-      // highlight the mouseover target
-      event.target.style.borderColor = "white";
+
+      event.target.style.borderColor = "green";
       event.target.style.borderStyle = "solid";
-      // reset the color after a short delay
+
       setTimeout(() => {
         event.target.style.borderColor = "";
         event.target.style.borderStyle = "";
@@ -117,10 +126,10 @@ choosePp.addEventListener("mouseover", (event) => {
 let choosePr = document.getElementById('choosePlayerR');
 
     choosePr.addEventListener("mouseover", (event) => {
-        // highlight the mouseover target
-        event.target.style.borderColor = "white";
+        
+        event.target.style.borderColor = "green";
         event.target.style.borderStyle = "solid";
-        // reset the color after a short delay
+        
         setTimeout(() => {
           event.target.style.borderColor = "";
           event.target.style.borderStyle = "";
@@ -128,5 +137,3 @@ let choosePr = document.getElementById('choosePlayerR');
       }, false);
     
 //---------------------------------------------------------------------------
-
-//Affichage des couleurs pour choix de l'ordinateur 
